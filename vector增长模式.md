@@ -1,4 +1,4 @@
-# vector是如何增长的
+# vector 的增长模式
 
 vector将元素保存在连续的内存空间中，因为元素是连续存储的，和内置数组所使用的机制一样，所以以下标计算其地址非常快速，元素也能快速访问。但是，添加或删除元素却会非常耗时。插入或删除元素时，需要将插入或删除位置之后的元素移动以保持连续存储。并且有时因为空间不够还需要分配额外的存储空间，于是每个元素必须移动到新的存储空间，然后释放旧的存储空间。如果频繁地进行内存分配和释放，性能则会极差。
 
@@ -11,7 +11,7 @@ vector将元素保存在连续的内存空间中，因为元素是连续存储�
 如果有v是一个vector，v.size()和v.capacity()可以得到v的size和capacity.
 
 你可以将一个vector想象成这样：
-![](http://i1.piimg.com/567571/cfa1466af1a28be5.png)
+![](https://github.com/Rjerk/learning-notes/blob/master/img/vector.png?raw=true)
 
 每次v.push_back(i)时，元素i被存储在预留空间，这样就无需重新分配新的内存空间。
 
@@ -37,7 +37,7 @@ vector将元素保存在连续的内存空间中，因为元素是连续存储�
 
 假若capacity每次翻倍呢，会好点吗？假如最后有n个元素已经填入，差一点就要重新分配了。
 
-![](http://i1.piimg.com/567571/35bcb5f455adfe75.png)
+![](https://github.com/Rjerk/learning-notes/blob/master/img/vector2.png?raw=true)
 
 如图，总共的重新分配次数为n/2 + n/4 + ... + 1，约等于n，即用时O(n)。即使元素再多点，再重新分配一次，时间还是O(n)，可以看出这个策略已经好太多了。
 
@@ -52,13 +52,15 @@ int main()
 	std::vector<int> vi;
 	for (int i = 0; i < 40; ++i) {
 		vi.push_back(i);
-		std::cout << "vi.size() = " << vi.size() 
+		std::cout << "> vi.size() = " << vi.size() 
 			  << ", vi.capacity()= " << vi.capacity() << std::endl;
 	}
 	return 0;
 }
 ```
+
 输出：
+```
 > vi.size() = 1, vi.capacity()= 1
 > vi.size() = 2, vi.capacity()= 2
 > vi.size() = 3, vi.capacity()= 4
@@ -99,7 +101,7 @@ int main()
 > vi.size() = 38, vi.capacity()= 64
 > vi.size() = 39, vi.capacity()= 64
 > vi.size() = 40, vi.capacity()= 64
-
+```
 可以看出，在本机标准库中，采用的策略是在每次需要分配新的内存空间时将capacity设置为size的两倍。
 
 当然，所有实现都应遵循的原则是：确保用push_back向vector添加元素的操作有高效率，通过n次调用push_back添加n个元素的vector，所花费的时间不能超过n的常数倍。

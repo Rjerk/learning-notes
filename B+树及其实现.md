@@ -8,7 +8,7 @@ B+树采用平衡树结构，其树根到树叶的每条路径的长度相同。
 
 典型的结点结构如图：
 
-![](http://ohn6qfqhe.bkt.clouddn.com/bplus2.png)
+![](https://github.com/Rjerk/learning-notes/blob/master/img/bpt1.png?raw=true)
 
 每个结点存放n-1个搜索码(K1...Kn-1)和n个指针(P1...Pn)，并且搜索码按序存放(K1<K2...<Kn-1)。
 
@@ -30,7 +30,7 @@ B+树采用平衡树结构，其树根到树叶的每条路径的长度相同。
 
 如下图，第一个叶结点中搜索码1、2 小于下一个叶结点中搜索码3、4。
 
-![](https://upload.wikimedia.org/wikipedia/commons/3/37/Bplustree.png)
+![](https://github.com/Rjerk/learning-notes/blob/master/img/bpt2.png?raw=true)
 
 ## B+树操作
 
@@ -66,7 +66,7 @@ B+树采用平衡树结构，其树根到树叶的每条路径的长度相同。
 
 如图，插入12：
 
-![](http://www.cburch.com/cs/340/reading/btree/btree-5.png)
+![](https://github.com/Rjerk/learning-notes/blob/master/img/bpt3.png?raw=true)
 
 插入12，包含[9、10、11]的叶结点要分裂成两个结点，[9、10]以及[11、12]，此时将新结点的最小值11插入到原结点的父节点中，其内包含[9、13、16]。
 
@@ -76,7 +76,7 @@ B+树采用平衡树结构，其树根到树叶的每条路径的长度相同。
 
 结果如下图所示：
 
-![](http://www.cburch.com/cs/340/reading/btree/btree-6.png)
+![](https://github.com/Rjerk/learning-notes/blob/master/img/bpt4.png?raw=true)
 
 ### 删除
 
@@ -123,17 +123,17 @@ B+树采用平衡树结构，其树根到树叶的每条路径的长度相同。
 
 如图，删除13、15、1。
 
-![](http://www.cburch.com/cs/340/reading/btree/btree-6.png)
+![](https://github.com/Rjerk/learning-notes/blob/master/img/bpt4.png?raw=true)
 
 删除13：
 
-![](http://www.cburch.com/cs/340/reading/btree/btree-7.png)
+![](https://github.com/Rjerk/learning-notes/blob/master/img/bpt5.png?raw=true)
 
 删除13后，其内结点只有[15], 前面的兄弟结点无法分发，需在其后面的兄弟结点移动16进来，此时两个结点为[15, 16], [20, 25]，此时将搜索码20更新入父结点。
 
 删除15：
 
-![](http://www.cburch.com/cs/340/reading/btree/btree-8.png)
+![](https://github.com/Rjerk/learning-notes/blob/master/img/bpt6.png?raw=true)
 
 删除15后，其内结点只有[16], 而其后兄弟结点刚好满足叶结点容纳元素最小个数的条件无法分发，只能合并。合并到其后的兄弟结点后为[16, 20, 25]，此时它的父结点搜索码为空，只有一个指向叶结点的指针，不满足条件，此父结点需要借取它的兄弟的结点。
 
@@ -141,7 +141,7 @@ B+树采用平衡树结构，其树根到树叶的每条路径的长度相同。
 
 删除1：
 
-![](http://www.cburch.com/cs/340/reading/btree/btree-9.png)
+![](https://github.com/Rjerk/learning-notes/blob/master/img/bpt7.png?raw=true)
 
 删除1后，当前叶结点合并入其兄弟结点内成为[4, 9, 10]，其父结点为空，该父结点与其兄结点进行合并，其兄弟结点此时为[11, 13]，其孩子为[4, 9, 10], [11, 12], [16, 20, 25]。此时根结点为没有搜索码，于是以其唯一孩子取而代之称为新的根节点。
 

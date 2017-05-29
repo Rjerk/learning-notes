@@ -56,7 +56,7 @@ KiB Swap:  1046524 total,   716900 free,   329624 used.   544252 avail Mem
 
 进程状态转换图
 
-![](http://www.bogotobogo.com/Linux/images/process/ProcessState.png)
+![](https://github.com/Rjerk/learning-notes/blob/master/img/process.png?raw=true)
 
 ## 进程的创建、执行和终止
 
@@ -196,4 +196,3 @@ pid_t waitpid(pid_t pid, int* status_sp, int options);
 // 成功返回子进程的PID，如果WNOHANG，返回0，其他错误返回-1.
 // <wait.h>中定义#define WNOHANG 1，指如果等待集合中的任何子进程都没终止，就立即返回0.
 ```
-
