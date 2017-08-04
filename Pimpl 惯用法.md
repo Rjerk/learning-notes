@@ -1,4 +1,4 @@
-# Pimpl 惯用法
+# C++: Pimpl 惯用法
 
 Pimpl 是 "pointer to implementation" 的缩写，该技巧可以避免在头文件里暴露私有细节。
 
