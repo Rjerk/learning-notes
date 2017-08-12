@@ -1,4 +1,4 @@
-# Chapter 1: Learning Modern Core Language Features
+# 核心语言特性
 
 ## 尽可能使用 `auto` 关键字
 
