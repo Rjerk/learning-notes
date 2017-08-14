@@ -192,31 +192,30 @@ C++ 标准库定义了异常的分类，出于以下目的：
 
 在编译时期，可以用 `operator noexcept` 来检查一个函数是否被声明为 no-throwing。
 
-    ```
-    int double_it(int const i) noexcept
-    {
-        return i + i;
-    }
-    int half_it(int const i)
-    {
-        throw std::runtime_error("not implemented!");
-    }
-    struct foo
-    {
-        foo() {}
-    };
-    std::cout << std::boolalpha
-        << noexcept(func_no_throw()) << std::endl // true
-        << noexcept(generic_func_1<int>()) << std::endl // true
-        << noexcept(generic_func_1<std::string>()) << std::endl // true
-        << noexcept(generic_func_2<int>()) << std::endl // true
-        << noexcept(generic_func_2<std::string>()) << std::endl // true
-        << noexcept(generic_func_2<foo>()) << std::endl // false
-        << noexcept(double_it(42)) << std::endl // true
-        << noexcept(half_it(42)) << std::endl // false
-        << noexcept(func(double_it, 42)) << std::endl // true
-        << noexcept(func(half_it, 42)) << std::endl; // true
-    ```
+```
+int double_it(int const i) noexcept
+{
+    return i + i;
+}
+int half_it(int const i)
+{
+    throw std::runtime_error("not implemented!");
+}
+struct foo {
+    foo() {}
+};
+std::cout << std::boolalpha
+          << noexcept(func_no_throw()) << std::endl // true
+          << noexcept(generic_func_1<int>()) << std::endl // true
+          << noexcept(generic_func_1<std::string>()) << std::endl // true
+          << noexcept(generic_func_2<int>()) << std::endl // true
+          << noexcept(generic_func_2<std::string>()) << std::endl // true
+          << noexcept(generic_func_2<foo>()) << std::endl // false
+          << noexcept(double_it(42)) << std::endl // true
+          << noexcept(half_it(42)) << std::endl // false
+          << noexcept(func(double_it, 42)) << std::endl // true
+          << noexcept(func(half_it, 42)) << std::endl; // true
+```
 
 一个带有 `noexcept` 的函数如果因为异常而退出则会导致程序的不正常终止，因此使用 `noexcept` 要小心。它的存在有利代码优化，保留强异常保证时帮助提升性能。
 

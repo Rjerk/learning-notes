@@ -188,9 +188,8 @@ struct Control {
     
     Control(std::string const & t,
     
-    TextVerticalAligment const va,
-    TextHorizontalAligment const ha):
-        text(t), valign(va), halign(ha) // [6]
+    TextVerticalAligment const va, TextHorizontalAligment const ha)
+        : text(t), valign(va), halign(ha) // [6]
     {}
 };
 ```
