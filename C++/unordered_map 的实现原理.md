@@ -106,12 +106,12 @@ namespace std {
 
 然后使用 `std::hash<Key>` 进行 hash value 的计算，使用 `operator==` 进行 Key 相等性检查。 
 
-```
+```cpp
 int main()
 {
     std::unordered_map<Key, string> mp = {
-        {{"John", "Doe", 12}, "first"},
-        {{"Mary", "Sue", 11}, "second"}
+        { { "John", "Doe", 12 }, "first" },
+        { { "Mary", "Sue", 11 }, "second" }
     };
     Key John {"John", "Doe", 12};
     auto iter = mp.find(John);
